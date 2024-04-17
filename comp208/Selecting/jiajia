@@ -1,0 +1,113 @@
+# created by virtualenv automatically
+*
+
+from sklearn.feature_selection import VarianceThreshold
+import pandas as pd
+def variance_demo():
+    """
+    过滤低方差特征
+    :return:
+    # 1、获取数据
+    data = pd.read_csv(r"C:\Users\羊羊\Desktop\机器视觉\学习资料\黑马程序学习资料机器学习\02-代码\factor_returns.csv")
+    data = data.iloc[:, 1:-2]
+    print("data:\n", data)
+
+    # 2、实例化一个转换器类
+    transfer = VarianceThreshold(threshold=10)
+
+    # 3、调用fit_transform
+    data_new = transfer.fit_transform(data)
+    print("data_new:\n", data_new, data_new.shape)
+variance_demo()
+
+
+
+from sklearn.feature_selection import VarianceThreshold
+var = VarianceThreshold(threshold=feature_variance.var().mean()) #这里让方差阀值等于四项特征的方差平均值
+var.fit(feature_variance)
+var.transform(feature_variance) #返回被留下的特征列
+var.feature_names_in_ #查看模型拟合时导入的特征名称
+var.get_feature_names_out() #查看被留下特征的字符名称
+var.variances_ #每个特征对应的方差值
+
+------------------------------------------------------------------------------------------------------------------
+
+class sklearn.feature_selection.SelectKBest(score_func=<function f_classif>, *, k=10)
+from sklearn.datasets import load_digits
+>>> from sklearn.feature_selection import SelectKBest, chi2
+>>> X, y = load_digits(return_X_y=True)
+>>> X.shape
+(1797, 64)
+>>> X_new = SelectKBest(chi2, k=20).fit_transform(X, y)
+>>> X_new.shape
+(1797, 20)
+
+'fit(self, X, y)'
+	在（X，y）上运行得分功能并获得适当的功能。
+	相当于训练模型吧。
+	Parameters
+		X：array-like of shape (n_samples, n_features)
+		   输入训练样本。
+		y：array-like of shape (n_samples,)
+		   目标值（分类中的类标签，回归中的实数）。
+	Returns
+		self：object
+
+'fit_transform(self, X[, y])'
+	用X训练模型，然后对其进行转换。
+	Parameters
+		X：{array-like, sparse matrix, dataframe} of shape (n_samples, n_features)
+		y：ndarray of shape (n_samples,), default=None
+		   目标值。
+		**fit_paramsdict：其他拟合参数。
+
+	Returns
+		X_new：ndarray array of shape (n_samples, n_features_new)
+			   转换后的数组。
+
+'get_params(self[, deep])'
+	获取此估计量的参数。
+	Parameters
+		deep: bool, default=True
+			  如果为True，则将返回此估算器和作为估算器的包含子对象的参数。
+
+	Returns
+		params: mapping of string to any
+			    参数名称映射到其值。
+
+'get_support(self[, indices])'
+	获取所选特征的掩码或整数索引
+	Get a mask, or integer index, of the features selected
+
+'inverse_transform(self, X)'
+	反向转换操作
+	Parameters
+		X: array of shape [n_samples, n_selected_features]
+		   输入样本。
+
+	Returns
+		X_r: array of shape [n_samples, n_original_features]
+			 在X中被transform删除的特征位置加入零列。
+
+'set_params(self, \*\*params)'
+	设置此估算器的参数。
+	Parameters
+		**params: dict
+				  估算器参数.
+
+	Returns
+		self: object
+			  估算器实例。
+
+'transform(self, X)'
+	将X缩小为指定的k个特征。
+	Parameters
+		X: array of shape [n_samples, n_features]
+		   输入样本。
+
+	Returns
+		X_new: array of shape [n_samples, n_selected_features]
+			 仅保留k个最优特征的输入样本。
+--------------------------------------------------------------------
+
+
