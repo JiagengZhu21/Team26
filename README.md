@@ -1,5 +1,6 @@
 # COMP208
-
+#Team26 Group Members: 
+#Jia Chen(201768810), Jiageng Zhu(201770214), Junqin Cheng(201768863), 	   Luyuan Huang(201769063), Xiankai Shi(201769457), Yifei Chen(201768854)
 Project Title: DataCraft - An integrated, interactive tool for feature engineering in machine learning or data modeling
 
 Project Description:
